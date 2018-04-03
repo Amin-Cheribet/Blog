@@ -34,7 +34,7 @@
       "Middleware\\": "App/Middlewares/",
       "Controller\\": "App/Controllers/",
       "Model\\":      "App/Models/",
-      "Services\\":   "APP/Services/"
+      "Service\\":   "APP/Services/"
     }
   },
   "scripts": {
