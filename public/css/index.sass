@@ -1,0 +1,130 @@
+@import variables
+body
+    background-color: rgb(235, 235, 235)
+.head-container
+    position: absolute
+    top:      0
+    .cover-img
+        height:     100%
+        width:      100%
+        position:   fixed
+        background: radial-gradient(circle, rgb(124, 78, 171), rgb(86, 11, 145))
+        .description
+            width:       90%
+            height:      25%
+            margin:      10vh auto
+            padding-top: 20%
+            color:       white
+            font-family: regular
+            font-weight: bold
+            .title
+                padding:    0
+                margin:     10px
+                text-align: center
+                font-size:  400%
+            .sub-title
+                padding:    0
+                margin:     20px
+                font-size:  125%
+                text-align: center
+                color:      rgb(200, 200, 200)
+
+.content
+    width:            90%
+    height:           200vh
+    margin:           90vh auto 5% auto
+    background-color: white
+    border-radius:    10px
+    box-shadow:       0 0 20px rgb(145, 145, 145)
+    position:         relative
+    z-index:          2
+    .arrow-container
+        width:         100%
+        overflow:      hidden
+        border-radius: 15px
+        &:hover
+            cursor:           pointer
+            background-color: $deep-blue
+            border-radius:    0
+            transition:       300ms
+        &:hover .arrow
+            border-color: white
+            transition:   100ms
+        .arrow
+            width:        10vh
+            height:       10vh
+            margin:       auto
+            position:     relative
+            border-width: 3px 3px 0 0
+            border-color: black
+            border-style: double
+    .post-container
+        width:      33%
+        height:     20%
+        float:      left
+        margin-top: 10px
+        .post
+            height: 100%
+            width:  100%
+            &:hover
+                cursor:      pointer
+                text-shadow: 0 0 1px rgb(201, 201, 201)
+                transition:  300ms
+            &:hover .img-container
+                box-shadow: inset 0 0 0 10000px rgba(0,0,0,.2);
+                transition: 300ms
+            .img-container
+                margin:           auto
+                width:            80%
+                height:           60%
+                background-color: $blue1
+                img
+                    display: block
+                    width:   100%
+                    height:  100%
+            .title
+                color:       black
+                font-size:   170%
+                font-family: regular
+                margin:      2% 0 2% 0
+                text-align:  center
+            .post-description
+                width:       80%
+                color:       gray
+                margin:      5px auto
+                overflow:    hidden
+                text-align:  center
+                font-family: regular
+                font-size:   100%
+    .assort-list
+        width:         50%
+        margin:        10px auto 20px auto
+        border-bottom: 1px solid black
+        border-top:    1px solid black
+        ul
+            list-style: none
+            padding:    20px 0 20px 0
+            margin:     0
+            display:    block
+            li
+                display:    inline-block
+                width:      32%
+                text-align: center
+                margin:     0
+                padding:    0
+                a
+                    color:           gray
+                    font-size:       130%
+                    font-family:     regular
+                    text-decoration: none
+                    &:hover
+                        color:       black
+                        text-shadow: 0 0 1px gray
+                        transition:  200ms
+
+.arrow-up
+    transform: rotate(-45deg)
+    top:       22px
+.arrow-down
+    transform: rotate(135deg)
+    top:       -22px
