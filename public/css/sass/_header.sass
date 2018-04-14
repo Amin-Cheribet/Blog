@@ -1,6 +1,8 @@
 @import variables
 $header-hight: 8vh
 
+.display
+    display: none
 .transparent-header
     width:            100%
     height:           $header-hight
@@ -61,3 +63,12 @@ $header-hight: 8vh
         input[type=submit]
             +button(60%, 30px, 90%)
             margin: 15px auto
+        .subscribe-toggle
+            text-align: center
+            margin:     auto
+            display:    block
+            width:      100%
+            color:      blue
+            font-size:  80%
+            &:hover
+                cursor: pointer
