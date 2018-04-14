@@ -32,6 +32,10 @@ $(document).ready(function() {
     $('#login').click(function() {
         $('.login-form').toggleClass('display');
     });
+    $('.subscribe-toggle').click(function() {
+        $('.login').toggleClass('display');
+        $('.subscribe').toggleClass('display');
+    });
 });
 $(window).load(function() {
 
