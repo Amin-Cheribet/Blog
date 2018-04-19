@@ -7,7 +7,7 @@
     </head>
     <body>
         <div class="menu">
-
+            @include('include/admin-sidebar')
         </div>
         <div class="content">
             @yield('body')
