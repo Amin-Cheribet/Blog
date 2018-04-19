@@ -16,7 +16,22 @@ html, body {
   height: 100vh;
   position: fixed;
   top: 0;
-  left: 0; }
+  left: 0;
+  background: #1f232d;
+  font-family: regular; }
+  .menu .sidebar {
+    width: 100%;
+    height: 100%; }
+    .menu .sidebar a {
+      color: white;
+      text-decoration: none; }
+    .menu .sidebar .element {
+      border-bottom: 1px solid gray;
+      text-align: center;
+      padding: 5%;
+      font-size: 120%; }
+      .menu .sidebar .element:hover {
+        background-color: #15afcb; }
 
 .content {
   width: 78vw;

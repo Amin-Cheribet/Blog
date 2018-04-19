@@ -2,27 +2,42 @@
 @import mixins
 
 html, body
-    margin: 0
+    margin:  0
     padding: 0
 
 .menu
-    width: 20vw
-    height: 100vh
-    position: fixed
-    top: 0
-    left: 0
+    width:      20vw
+    height:     100vh
+    position:   fixed
+    top:        0
+    left:       0
+    background: $deep_blue
+    font-family: regular
+    .sidebar
+        width:  100%
+        height: 100%
+        a
+            color:           white
+            text-decoration: none
+        .element
+            border-bottom: 1px solid gray
+            text-align:    center
+            padding:       5%
+            font-size:     120%
+            &:hover
+                background-color: $blue2
 .content
-    width: 78vw
-    height: 100vh
-    float: right
+    width:   78vw
+    height:  100vh
+    float:   right
     padding: 10px
 
 .create-post
-    padding: 0
-    width: 100%
+    padding:     0
+    width:       100%
     font-family: regular
     table
-        width: 70%
+        width:  70%
         margin: 10px auto
     label
         font-size: 130%
@@ -33,6 +48,6 @@ html, body
         margin: 10px auto
     textarea
         +textarea()
-        width: 100%
-        height: 65vh
+        width:   100%
+        height:  65vh
         padding: 5px
