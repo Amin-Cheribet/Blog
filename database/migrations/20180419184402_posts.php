@@ -28,7 +28,7 @@ class Posts extends AbstractMigration
      */
     public function change()
     {
-        $posts = $this->tabel('posts', ['id' => false, 'primary_key' => 'id']);
+        $posts = $this->table('posts', ['id' => false, 'primary_key' => 'id']);
         $posts
         ->addColumn('id', 'string', ['limit' => 30])
         ->addColumn('title', 'string', ['limit' => 30])
