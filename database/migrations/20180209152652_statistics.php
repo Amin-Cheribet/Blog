@@ -17,15 +17,16 @@ class Statistics extends AbstractMigration
         ->addColumn('previousurl', 'string', ['limit' => 255, 'null' => true])
         ->addColumn('date', 'datetime')
         ->addColumn('memory', 'integer')
-        ->addColumn('softdelete', 'integer', ['limit' => 1])
+        ->addColumn('softdelete', 'boolean')
         ->addColumn('created_at', 'datetime')
+        ->addColumn('deleted_at', 'datetime')
         ->create();
 
         $uniq = $this->table('statistics_uniq', ['id' => false ,'primary_key' => 'id']);
         $uniq
         ->addColumn('id', 'string', ['limit' => 30])
         ->addColumn('hits', 'integer', ['limit' => 5])
-        ->addColumn('softdelete', 'integer', ['limit' => 1])
+        ->addColumn('softdelete', 'boolean')
         ->addColumn('created_at', 'datetime')
         ->addColumn('deleted_at', 'datetime')
         ->create();
