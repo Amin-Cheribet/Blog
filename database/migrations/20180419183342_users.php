@@ -37,6 +37,9 @@ class Users extends AbstractMigration
         ->addColumn('password', 'string', ['limit' => 20])
         ->addColumn('banned', 'integer')
         ->addColumn('auth', 'integer')
+        ->addColumn('softdelete', 'boolean')
+        ->addColumn('created_at', 'datetime')
+        ->addColumn('deleted_at', 'datetime')
         ->create();
     }
 }

@@ -34,6 +34,9 @@ class Comments extends AbstractMigration
         ->addColumn('id-post', 'string', ['limit' => 30])
         ->addColumn('id-user', 'string', ['limit' => 30])
         ->addColumn('comment', 'string')
+        ->addColumn('softdelete', 'integer', ['limit' => 1])
+        ->addColumn('created_at', 'datetime')
+        ->addColumn('deleted_at', 'datetime')
         ->create();
     }
 }
