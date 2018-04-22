@@ -39,6 +39,9 @@ class Posts extends AbstractMigration
         ->addColumn('group-id', 'string', ['limit' => 30])
         ->addColumn('langauge', 'string')
         ->addColumn('post', 'text')
+        ->addColumn('softdelete', 'integer', ['limit' => 1])
+        ->addColumn('created_at', 'datetime')
+        ->addColumn('deleted_at', 'datetime')
         ->create();
     }
 }
