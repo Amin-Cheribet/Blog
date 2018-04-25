@@ -31,8 +31,8 @@ class Comments extends AbstractMigration
         $comments = $this->table('comments', ['id' => false, 'primary_key' => 'id']);
         $comments
         ->addColumn('id', 'string', ['limit' => 30])
-        ->addColumn('id-post', 'string', ['limit' => 30])
-        ->addColumn('id-user', 'string', ['limit' => 30])
+        ->addColumn('post', 'string', ['limit' => 30])
+        ->addColumn('user', 'string', ['limit' => 30])
         ->addColumn('comment', 'string')
         ->addColumn('softdelete', 'boolean')
         ->addColumn('created_at', 'datetime')

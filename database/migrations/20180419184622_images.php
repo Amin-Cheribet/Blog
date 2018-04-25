@@ -32,6 +32,7 @@ class Images extends AbstractMigration
         $images
         ->addColumn('id', 'string', ['limit' => 30])
         ->addColumn('path', 'string')
+        ->addColumn('name', 'string')
         ->addColumn('softdelete', 'boolean')
         ->addColumn('created_at', 'datetime')
         ->addColumn('deleted_at', 'datetime')
