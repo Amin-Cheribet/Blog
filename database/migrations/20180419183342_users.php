@@ -34,7 +34,7 @@ class Users extends AbstractMigration
         ->addColumn('photo', 'string', ['limit' => 30])
         ->addColumn('name', 'string', ['limit' => 15])
         ->addColumn('email', 'string', ['limit' => 40])
-        ->addColumn('password', 'string', ['limit' => 20])
+        ->addColumn('password', 'string', ['limit' => 70])
         ->addColumn('banned', 'integer')
         ->addColumn('auth', 'integer')
         ->create();
