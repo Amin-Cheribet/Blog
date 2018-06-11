@@ -65,18 +65,17 @@ class User extends Controller
         if (!Auth::check(['id' => $id])) {
             throw new \Exception("Not allowed action", 98);
         }
-        $request->validate('name', 'Name')->required()->length(4, 15)->equals('password', 'password2')->unique('user', 'name');
-        $request->validate('email', 'E-mail')->required()->email()->length(4,100)->unique('user', 'email');
+        $request->validate('name', 'Name')->required()->length(4, 15);
+        $request->validate('email', 'E-mail')->required()->email()->length(4,100);
         $request->validate('password', 'Password')->required()->length(6, 30)->equals('Confirm-password', $request->password2);
         if ($request->isValide()) {
             Users::update([
                 'name'     => $request->name,
                 'email'    => $request->email,
-                'password' => $request->password,
+                'password' => Auth::hash($request->password),
             ])
             ->where('id', '=', $id)
             ->save();
-            redirect(previousUrl());
         }
         $data = Users::select()->where('id', '=', $id)->first();
         view('user/edit', ['data' => $data, 'errors' => $request->getErrors()]);
@@ -95,6 +94,6 @@ class User extends Controller
     {
         session_start();
         session_destroy();
-        redirect(previousUrl());
+        redirect(url('/'));
     }
 }
