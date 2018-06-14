@@ -4,18 +4,20 @@ namespace Controller;
 
 use Controller\Controller as Controller;
 use Request\Request as Request;
+use Authenticator\Auth as Auth;
+use Model\Comment as Comments;
 
 class Comment extends Controller
 {
-
     public function store(Request $request)
     {
         if (!Auth::check()) {
             throw new \Exception('Action not allowed', 1);
         }
         $request->validate('comment', 'Comment')->required()->length(3, 60);
-        if (!empty($request->getErrors())) {
-            return $request->getErrors();
+        if (!$request->isValide()) {
+            echo json_encode($request->getErrors());
+            return false;
         }
         Comments::insert([
             'id'      => uniqid(),
@@ -23,6 +25,7 @@ class Comment extends Controller
             'post'    => $request->post,
             'comment' => $request->comment,
         ])->save();
+        echo 1;
         return true;
     }
 
