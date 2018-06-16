@@ -5,16 +5,16 @@ namespace Controller;
 use Controller\Controller as Controller;
 use Request\Request as Request;
 use Model\Post as Posts;
+use Model\Comment as Comments;
 use Upload\Upload as Upload;
 use Authenticator\Auth as Auth;
 
 class Post extends Controller
 {
-
-    public function index(string $offset)
+    public function grid(int $offset = 0, int $number = 12)
     {
-        $data = Posts::select()->limit($offset, 30)->get();
-        view('post/index', ['posts' => $data]);
+        $data = Posts::leftJoin('images', 'gridimage', 'id')->where('language', '=', language())->limit($offset, $number)->get();
+        view('post/grid', ['posts' => $data]);
     }
 
     public function create()
@@ -33,7 +33,7 @@ class Post extends Controller
         $gridImage  = new Upload('grid-image');
         // validate uploaded images
         $coverImage->validate()->extension(['jpg', 'jpeg', 'gif', 'png'])->size(0, 3)->number(1);
-        $gridImage->validate()->extension(['jpg', 'jpeg', 'gif', 'png'])->size(0, 1)->number(1);
+        $gridImage->validate()->extension(['jpg', 'jpeg', 'gif', 'png'])->size(0, 3)->number(1);
         if (!empty($coverImage->getErrors())) {
             $errors = array_merge($errors, $coverImage->getErrors());
         }
@@ -44,7 +44,7 @@ class Post extends Controller
         if (empty($errors)) {
             $id = uniqid();
             $groupid = uniqid();
-            $language = !$request->language ? 'en' : $request->language;
+            $language = (!$request->language) ? 'en' : $request->language;
             $coverData = $coverImage->save('Storage');
             $gridData = $gridImage->save('Storage');
             $this->saveImage($coverData);
@@ -62,7 +62,6 @@ class Post extends Controller
             ])->save();
             redirect('post/'.$id);
         }
-
         view('post/create', ['errors' => $errors]);
     }
 
@@ -79,11 +78,11 @@ class Post extends Controller
 
     public function show(string $id)
     {
-        $post = Posts::select()->where('postgroup' ,'=', $id)->where('language', '=', language())->first();
+        $post = Posts::leftJoin('images', 'coverimage', 'id')->where('language', '=', language())->first();
         if (is_null($post)) {
             throw new \Exception("This Post does not exist", 404);
         }
-        $comments = \Model\Comment::select()->where('post', '=', $id)->get();
+        $comments = Comments::leftJoin('Users', 'user', 'id')->where('comments.post', '=', $id)->get();
         view('post/show', ['post' => $post, 'comments' => $comments]);
     }
 
