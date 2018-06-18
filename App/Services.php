@@ -14,6 +14,7 @@ return [
 
     'ServiceProviders' => [
         \Service\Csrf::class,
+        \Service\Configuration::class,
     ],
 
 ];
