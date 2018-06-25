@@ -1,0 +1,22 @@
+@import variables
+@import mixins
+
+.header
+    background-color: $deep_blue
+form
+    width:       40%
+    display:     block
+    margin:      20vh auto
+    font-family: regular
+    font-size:   130%
+    table
+        width: 100%
+    input[type=text],input[type=email],input[type=password]
+        +text-input()
+    input[type=submit]
+        +button(30%)
+        margin:    3vh auto
+        font-size: 80%
+
+.errors
+    color: rgb(213, 61, 123)

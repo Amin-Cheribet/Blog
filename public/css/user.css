@@ -1,0 +1,48 @@
+@font-face {
+  font-family: regular;
+  src: url(files/fonts/regular.ttf); }
+@font-face {
+  font-family: hand;
+  src: url(files/fonts/hand.ttf); }
+@font-face {
+  font-family: grand-hotel;
+  src: url(files/fonts/grand-hotel.otf); }
+.header {
+  background-color: #1f232d; }
+
+form {
+  width: 40%;
+  display: block;
+  margin: 20vh auto;
+  font-family: regular;
+  font-size: 130%; }
+  form table {
+    width: 100%; }
+  form input[type=text], form input[type=email], form input[type=password] {
+    border: 1px solid #3adda2;
+    width: 70%;
+    height: 30px;
+    border-radius: 3px;
+    padding-left: 5px; }
+    form input[type=text]:focus, form input[type=email]:focus, form input[type=password]:focus {
+      outline: none;
+      transition: 300ms;
+      border: 1px solid #22cff4;
+      box-shadow: 0 0 3px #15afcb; }
+  form input[type=submit] {
+    border-radius: 5px;
+    background-color: #3adda2;
+    color: white;
+    width: 30%;
+    height: 30px;
+    font-size: 100%;
+    display: block;
+    border: none;
+    margin: 3vh auto;
+    font-size: 80%; }
+    form input[type=submit]:hover {
+      cursor: pointer;
+      opacity: 0.8; }
+
+.errors {
+  color: #d53d7b; }

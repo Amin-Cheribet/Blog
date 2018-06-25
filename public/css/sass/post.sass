@@ -1,0 +1,86 @@
+@import variables
+@import mixins
+
+.head-container
+    position: absolute
+    top:      0
+    .cover-img
+        height:                100vh
+        width:                 100vw
+        position:              fixed
+        z-index:               0
+        background:            radial-gradient(circle, rgb(15, 215, 129), rgb(74, 189, 175))
+        background-repeat:     no-repeat
+        background-position:   top
+        background-size:       cover
+    .highlight
+        width:      100vw
+        height:     100vh
+        position:   fixed
+        top:        0
+        left:       0
+        z-index:    1
+        background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), transparent)
+
+.content
+    width:            100%
+    margin:           75vh auto 0 auto
+    background-color: white
+    box-shadow:       0 0 20px rgb(145, 145, 145)
+    position:         relative
+    z-index:          2
+    font-family:      regular
+    .title-container
+        width:         100%
+        height:        40vh
+        font-size:     150%
+
+        .title
+            text-align:  center
+            font-family: grand-hotel
+            font-size:   300%
+            padding:     4% 10% 4% 10%
+        .description
+            text-align: center
+            padding:    0 10% 0 10%
+            color:      gray
+    .post-container
+        width:      60%
+        min-height: 100vh
+        margin:     auto
+        font-size:  160%
+        .post
+            border-bottom: 1px solid gray
+            padding:       5% 0 5% 0
+        .comments
+            width:  80%
+            margin: 5% auto
+            .comment
+                margin-top:       5%
+                min-height:       10vh
+                max-height:       50vh
+                box-shadow:       0 0 15px rgb(230, 230, 230)
+                background-color: rgb(253, 253, 253)
+                .username-container
+                    padding-left: 10px
+                    color: rgb(3, 118, 196)
+                    &:hover
+                        cursor: pointer
+                        color:  gray
+                .comment-text
+                    font-size: 75%
+                    padding: 5px 5px 5px 10px
+        .comment-form
+            width:          100%
+            padding-bottom: 10%
+            table
+                width: 100%
+            textarea
+                +textarea()
+                width:   70%
+                margin:  5px auto
+                display: block
+            input[type=submit]
+                +button(25%)
+                margin:    10px auto
+                font-size: 60%

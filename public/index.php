@@ -6,10 +6,15 @@
  */
 
 // import composer autoloader
-require_once __DIR__.'/../vendor/autoload.php';
+require_once '../vendor/autoload.php';
 
 // create IOC container
 IOC\IOC::createContainer();
+// Load .env file
+container()->build('Dotenv\Dotenv', [rootDir()]);
+container()->Dotenv->load();
+// Load configuration
+require rootDir().'defaults.php';
 
 // preapring for starting application
 container()->build('Kernel\Kernel');

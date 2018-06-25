@@ -1,0 +1,76 @@
+@import variables
+@import mixins
+
+html, body
+    margin:  0
+    padding: 0
+*
+    font-family: regular
+.menu
+    width:      20vw
+    height:     100vh
+    position:   fixed
+    top:        0
+    left:       0
+    background: $deep_blue
+    font-family: regular
+    .sidebar
+        width:  100%
+        height: 100%
+        a
+            color:           white
+            text-decoration: none
+        .element
+            border-bottom: 1px solid gray
+            text-align:    center
+            padding:       5%
+            font-size:     120%
+            &:hover
+                background-color: $blue2
+.content
+    width:   78vw
+    height:  100vh
+    float:   right
+    padding: 10px
+
+.create-post, .configuration-form
+    padding:     0
+    width:       100%
+    font-family: regular
+    table
+        width:  70%
+        margin: 10px auto
+    label
+        font-size: 130%
+    input[type=text]
+        +text-input(100%, 30px)
+    input[type=submit]
+        +button(30%)
+        margin: 10px auto
+    textarea
+        +textarea()
+        width:   100%
+        height:  65vh
+        padding: 5px
+
+.errors
+    list-style: none
+    border:     1px solid red
+    width:      80%
+    margin:     10px auto
+    padding:    10px
+
+.list
+    td
+        border-left: 1px solid black
+        margin-left: 10%
+        font-size: 140%
+        a
+            text-decoration: none
+.red-button
+    +button(100x, 100%, 70%, 5px, $red-pink, white)
+    padding: 5px
+
+.green-button
+    +button(100x, 100%, 70%, 5px, $medium-green, white)
+    padding: 5px

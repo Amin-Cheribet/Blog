@@ -1,0 +1,98 @@
+@import variables
+$header-hight: 8vh
+
+.display
+    display: none
+.transparent-header
+    width:      100%
+    height:     $header-hight
+    position:   fixed
+    top:        0px
+    left:       0px
+    z-index:    10
+    background: linear-gradient(to bottom, rgba(5, 5, 5, 0.91), rgba(26, 26, 26, 0.2))
+    box-shadow: 0 0 35px rgba(26, 26, 26, 0.4)
+.colored-header
+    width:            100%
+    height:           $header-hight
+    position:         fixed
+    top:              0px
+    left:             0px
+    z-index:          10
+    background-color: $deep-blue
+.header
+    a
+        text-decoration: none
+        color: white
+    .logo
+        min-width:   10%
+        height:      100%
+        line-height: $header-hight
+        text-align:  center
+        font-family: grand-hotel
+        font-size:   250%
+        color:       $white
+        float:       left
+    .elements
+        float:  right
+        height: 100%
+        width:  10%
+        border-radius: 5px
+        div
+            text-align:    center
+            width:         80%
+            margin:        auto
+            height:        $header-hight
+            line-height:   $header-hight
+            color:         white
+            font-family:   regular
+            font-size:     110%
+            &:hover
+                cursor:     pointer
+                color:      rgb(204, 204, 204)
+                transition: 300ms
+    .login-form
+        font-family:      regular
+        font-size:        110%
+        position:         fixed
+        top:              $header-hight
+        right:            2%
+        background-color: white
+        padding:          2% 3% 1% 3%
+        box-shadow:       0 0 10px gray
+        input[type=text], input[type=password]
+            +text-input(110%, 30px)
+        input[type=submit]
+            +button(60%, 30px, 90%)
+            margin: 15px auto
+        .subscribe-toggle
+            text-align: center
+            margin:     auto
+            display:    block
+            width:      100%
+            color:      blue
+            font-size:  80%
+            &:hover
+                cursor: pointer
+.errorBox
+    color:     red
+    font-size: 80%
+    margin:    3px auto
+
+.languages
+    display: none
+    border-radius: 5px
+    ul
+        list-style:    none
+        margin:        0
+        padding:       10px
+        background:    white
+        border-radius: 5px
+        li
+            line-height: 150%
+            color: black
+            &:hover
+                color:           gray
+                text-shadow:     0 0 1px white
+                text-decoration: underline
+                transition:      300ms
