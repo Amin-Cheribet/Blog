@@ -38,7 +38,11 @@ form {
     font-size: 100%;
     display: block;
     border: none;
-    margin: 3vh auto; }
+    margin: 3vh auto;
+    font-size: 80%; }
     form input[type=submit]:hover {
       cursor: pointer;
       opacity: 0.8; }
+
+.errors {
+  color: #d53d7b; }

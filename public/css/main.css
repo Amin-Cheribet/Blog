@@ -17,7 +17,8 @@
   top: 0px;
   left: 0px;
   z-index: 10;
-  background-color: transparent; }
+  background: linear-gradient(to bottom, rgba(5, 5, 5, 0.91), rgba(26, 26, 26, 0.2));
+  box-shadow: 0 0 35px rgba(26, 26, 26, 0.4); }
 
 .colored-header {
   width: 100%;
@@ -54,10 +55,10 @@
     color: white;
     font-family: regular;
     font-size: 110%; }
-  .header .elements:hover * {
-    cursor: pointer;
-    color: #cccccc;
-    transition: 300ms; }
+    .header .elements div:hover {
+      cursor: pointer;
+      color: #cccccc;
+      transition: 300ms; }
 .header .login-form {
   font-family: regular;
   font-size: 110%;
@@ -100,6 +101,29 @@
     font-size: 80%; }
     .header .login-form .subscribe-toggle:hover {
       cursor: pointer; }
+
+.errorBox {
+  color: red;
+  font-size: 80%;
+  margin: 3px auto; }
+
+.languages {
+  display: none;
+  border-radius: 5px; }
+  .languages ul {
+    list-style: none;
+    margin: 0;
+    padding: 10px;
+    background: white;
+    border-radius: 5px; }
+    .languages ul li {
+      line-height: 150%;
+      color: black; }
+      .languages ul li:hover {
+        color: gray;
+        text-shadow: 0 0 1px white;
+        text-decoration: underline;
+        transition: 300ms; }
 
 html {
   margin: 0;
