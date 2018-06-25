@@ -10,7 +10,7 @@ class Admin extends Controller
 {
     public function index()
     {
-        view('admin/panel');
+        $this->postsList();
     }
 
     public function postsList()
@@ -52,7 +52,6 @@ class Admin extends Controller
     {
         $hits = \Model\StatisticsHits::select()->count();
         $unique = \Model\StatisticsUniq::select()->count();
-        sleep(10);
         return view('admin/statistics', ['hits' => $hits, 'unique' => $unique]);
     }
 }

@@ -30,9 +30,7 @@ $route->group('user', function($route) {
 });
 
 $route->group('admin', function($route) {
-    $route->get('/', function() {
-        view('admin/panel');
-    });
+    $route->get('/', 'Admin@index');
     $route->get('posts/', 'Admin@postsList');
     $route->get('users', 'Admin@usersList');
     $route->get('configuration', 'Admin@showConfiguration');
