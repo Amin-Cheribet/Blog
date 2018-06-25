@@ -6,7 +6,17 @@
 @endsection
 
 @section('body')
-    <form action="index.html" method="post">
+    <form action="{{url("user/$data->id")}}" method="post">
+
+        {{method_field('PUT')}}
+        {{csrf_field()}}
+        @if (isset($errors))
+        <ul class='errors'>
+            @foreach ($errors as $error)
+                <li> {{$error}}</li>
+            @endforeach
+        </ul>
+        @endif
         <table>
             <tr>
                 <td><label for="1">Name : </label></td>
@@ -18,7 +28,11 @@
             </tr>
             <tr>
                 <td><label for="3">Password :</label></td>
-                <td><input type="password" name="password" value="{{$data->password}}"></td>
+                <td><input type="password" name="password" placeholder="Password"></td>
+            </tr>
+            <tr>
+                <td><label for="4">Confirm password :</label></td>
+                <td><input type="password" name="password2" placeholder="Confirm Your password">
             </tr>
             <tr>
                 <td colspan="2"><input type="submit" name="submit" value="Edit"></td>

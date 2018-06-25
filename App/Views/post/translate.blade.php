@@ -1,11 +1,11 @@
 @extends('template/admin')
 
 @section('head')
-    <title>Create Post</title>
+    <title>Translate Post</title>
 @endsection
 
 @section('body')
-    <form class="create-post" action="{{url('post')}}" method="post" enctype="multipart/form-data">
+    <form class="create-post" action="{{url('post/translate/'.$groupid)}}" method="post" enctype="multipart/form-data">
         {{csrf_field()}}
         @if (isset($errors))
         <ul class='errors'>
@@ -15,6 +15,8 @@
         </ul>
         @endif
         <table>
+            <input type="hidden" name="coverimage" value="{{$original->coverimage}}">
+            <input type="hidden" name="gridimage" value="{{$original->gridimage}}">
             <tr>
                 <td><label for="1">Title:</label></td>
                 <td><input type="text" name="title" placeholder="Post Title"></td>
@@ -25,21 +27,13 @@
             </tr>
             <tr>
                 <td><label for="3">Language:</label></td>
-                <td><input type="text" name="language" placeholder="example: en (or) fr"></td>
-            </tr>
-            <tr>
-                <td><label for="4">Cover image</label></td>
-                <td><input type="file" name="cover-image[]"></td>
-            </tr>
-            <tr>
-                <td><label for="5">Grid image</label></td>
-                <td><input type="file" name="grid-image[]"></td>
+                <td><input type="text" name="language" placeholder="example: english"></td>
             </tr>
             <tr>
                 <td colspan="2"><textarea name="post" placeholder="Write something good"></textarea></td>
             </tr>
             <tr>
-                <td colspan="2"><input type="submit" name="submit" value="Create Post"></td>
+                <td colspan="2"><input type="submit" name="submit" value="Translate Post"></td>
             </tr>
         </table>
     </form>
