@@ -4,13 +4,14 @@ $header-hight: 8vh
 .display
     display: none
 .transparent-header
-    width:            100%
-    height:           $header-hight
-    position:         fixed
-    top:              0px
-    left:             0px
-    z-index:          10
-    background-color: transparent
+    width:      100%
+    height:     $header-hight
+    position:   fixed
+    top:        0px
+    left:       0px
+    z-index:    10
+    background: linear-gradient(to bottom, rgba(5, 5, 5, 0.91), rgba(26, 26, 26, 0.2))
+    box-shadow: 0 0 35px rgba(26, 26, 26, 0.4)
 .colored-header
     width:            100%
     height:           $header-hight
@@ -46,10 +47,10 @@ $header-hight: 8vh
             color:         white
             font-family:   regular
             font-size:     110%
-        &:hover *
-            cursor:     pointer
-            color:      rgb(204, 204, 204)
-            transition: 300ms
+            &:hover
+                cursor:     pointer
+                color:      rgb(204, 204, 204)
+                transition: 300ms
     .login-form
         font-family:      regular
         font-size:        110%
@@ -73,3 +74,25 @@ $header-hight: 8vh
             font-size:  80%
             &:hover
                 cursor: pointer
+.errorBox
+    color:     red
+    font-size: 80%
+    margin:    3px auto
+
+.languages
+    display: none
+    border-radius: 5px
+    ul
+        list-style:    none
+        margin:        0
+        padding:       10px
+        background:    white
+        border-radius: 5px
+        li
+            line-height: 150%
+            color: black
+            &:hover
+                color:           gray
+                text-shadow:     0 0 1px white
+                text-decoration: underline
+                transition:      300ms
