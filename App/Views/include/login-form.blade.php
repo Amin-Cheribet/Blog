@@ -1,6 +1,7 @@
 <div class="login-form display">
     <div class="login">
-        <form class="" action="{{url('user/login')}}" method="post">
+        <div class="loginErrors errorBox"></div>
+        <form id="login-form" action="{{url('user/login')}}" method="post">
              {{ csrf_field() }}
             <table>
                 <tr>
@@ -22,7 +23,8 @@
     </div>
 
     <div class="subscribe display">
-        <form class="" action="{{url('user')}}" method="post">
+        <div class="subscribeErrors errorBox"></div>
+        <form id="subscribe-form" action="{{url('user')}}" method="post">
             {{csrf_field()}}
             <table>
                 <tr>
