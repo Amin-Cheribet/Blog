@@ -42,11 +42,11 @@ class Post extends Controller
         }
 
         if (empty($errors)) {
-            $id = uniqid();
-            $groupid = uniqid();
-            $language = (!$request->language) ? 'en' : $request->language;
+            $id        = uniqid();
+            $groupid   = uniqid();
+            $language  = (!$request->language) ? 'en' : $request->language;
             $coverData = $coverImage->save('Storage');
-            $gridData = $gridImage->save('Storage');
+            $gridData  = $gridImage->save('Storage');
             $this->saveImage($coverData);
             $this->saveImage($gridData);
             Posts::insert([
@@ -98,7 +98,7 @@ class Post extends Controller
         $request->validate('language', 'Language')->length(2, 15);
         $request->validate('description', 'Description')->length(3, 50);
         $request->validate('post', 'Post Text')->required()->length(50, 99999);
-        $errors  = $request->getErrors();
+        $errors     = $request->getErrors();
         $coverImage = new Upload('cover-image');
         $gridImage  = new Upload('grid-image');
         if ($coverImage->exist()) {
@@ -137,6 +137,36 @@ class Post extends Controller
     public function delete(string $id)
     {
         Posts::delete()->where('id', '=', $id)->save();
-        return true;
+        redirect(previousUrl());
+    }
+
+    public function translate(string $id)
+    {
+        $original = Posts::select()->where('postgroup', '=', $id)->first();
+        return view('post/translate', ['groupid' => $id, 'original' => $original]);
+    }
+
+    public function storeTranslate(request $request, string $id)
+    {
+        $request->validate('title', 'Title')->required()->length(3, 20);
+        $request->validate('description', 'Sub title')->length(3, 50);
+        $request->validate('language', 'Language')->length(2, 15);
+        $request->validate('post', 'Post Text')->required()->length(50, 99999);
+        if (!empty($request->getErrors())) {
+            return view('post/translate', ['errors' => $request->getErrors(), 'groupid' => $id]);
+        }
+        Posts::insert([
+            'id'          => uniqid(),
+            'postgroup'   => $id,
+            'title'       => $request->title,
+            'description' => $request->description,
+            'writer'      => Auth::user()->id,
+            'language'    => $request->language,
+            'post'        => $request->post,
+            'coverimage'  => $request->coverimage,
+            'gridimage'   => $request->gridimage,
+        ])
+        ->save();
+        redirect(previousUrl());
     }
 }
