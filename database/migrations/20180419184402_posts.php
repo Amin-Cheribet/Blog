@@ -1,9 +1,9 @@
 <?php
-$namespaceDefinition
 
-use $useClassName;
 
-class $className extends $baseClassName
+use Phinx\Migration\AbstractMigration;
+
+class Posts extends AbstractMigration
 {
     /**
      * Change Method.
@@ -28,9 +28,17 @@ class $className extends $baseClassName
      */
     public function change()
     {
-        $table = $this->table('', ['id' => false, 'primary_key' => 'id']);
-        $table
+        $posts = $this->table('posts', ['id' => false, 'primary_key' => 'id']);
+        $posts
         ->addColumn('id', 'string', ['limit' => 30])
+        ->addColumn('title', 'string', ['limit' => 30])
+        ->addColumn('description', 'string', ['limit' => 100])
+        ->addColumn('coverimage', 'string')
+        ->addColumn('gridimage', 'string')
+        ->addColumn('writer', 'string', ['limit' => 30])
+        ->addColumn('postgroup', 'string', ['limit' => 30])
+        ->addColumn('language', 'string')
+        ->addColumn('post', 'text')
         ->addColumn('softdelete', 'boolean')
         ->addColumn('created_at', 'datetime')
         ->addColumn('deleted_at', 'datetime')

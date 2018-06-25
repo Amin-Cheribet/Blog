@@ -1,9 +1,9 @@
 <?php
-$namespaceDefinition
 
-use $useClassName;
 
-class $className extends $baseClassName
+use Phinx\Migration\AbstractMigration;
+
+class Images extends AbstractMigration
 {
     /**
      * Change Method.
@@ -28,9 +28,11 @@ class $className extends $baseClassName
      */
     public function change()
     {
-        $table = $this->table('', ['id' => false, 'primary_key' => 'id']);
-        $table
+        $images = $this->table('images', ['id' => false, 'primary_key' => 'id']);
+        $images
         ->addColumn('id', 'string', ['limit' => 30])
+        ->addColumn('path', 'string')
+        ->addColumn('name', 'string')
         ->addColumn('softdelete', 'boolean')
         ->addColumn('created_at', 'datetime')
         ->addColumn('deleted_at', 'datetime')
