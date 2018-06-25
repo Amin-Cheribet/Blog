@@ -81,13 +81,14 @@ class User extends Controller
         view('user/edit', ['data' => $data, 'errors' => $request->getErrors()]);
     }
 
-    public function delete(Request $request, string $id)
+    public function delete(string $id)
     {
-        if (!Auth::check(['id' => $id])) {
+        if (!Auth::check(['auth' => 2])) {
             throw new \Exception("Not autorized", 1);
         }
 
         Users::delete()->where('id', '=', $id)->save();
+        redirect(previousUrl());
     }
 
     public function disconnect()
@@ -95,5 +96,31 @@ class User extends Controller
         session_start();
         session_destroy();
         redirect(url('/'));
+    }
+
+    public function block(string $id)
+    {
+        if (!Auth::check(['auth' => 2])) {
+            throw new \Exception("you are not autorized to do this action", 1);
+        }
+        Users::update([
+            'banned' => '1'
+        ])
+        ->where('id' , '=', $id)
+        ->save();
+        redirect(previousUrl());
+    }
+
+    public function unBlock(string $id)
+    {
+        if (!Auth::check(['auth' => 2])) {
+            throw new \Exception("you are not autorized to do this action", 1);
+        }
+        Users::update([
+            'banned' => '0'
+        ])
+        ->where('id' , '=', $id)
+        ->save();
+        redirect(previousUrl());
     }
 }
