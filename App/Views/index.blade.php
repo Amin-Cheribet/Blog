@@ -9,10 +9,6 @@
 @section('body')
     <div class='head-container'>
         <div class='cover-img' style="background-image: url('{{container()->Configuration::$configuration->coverImage}}')">
-            <div class="description">
-                <h1 class="title">My description title</h1>
-                <h4 class="sub-title">sub description title fsldkj lkgd mùdlsfkg mlsdkg </h4>
-            </div>
         </div>
     </div>
     <div class="content grid">
