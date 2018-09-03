@@ -48,7 +48,7 @@
   border-radius: 5px; }
   .header .elements div {
     text-align: center;
-    width: 80%;
+    min-width: 80%;
     margin: auto;
     height: 8vh;
     line-height: 8vh;
