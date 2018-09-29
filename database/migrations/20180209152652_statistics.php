@@ -26,7 +26,7 @@ class Statistics extends AbstractMigration
         $uniq
         ->addColumn('id', 'string', ['limit' => 30])
         ->addColumn('hits', 'integer', ['limit' => 5])
-        ->addColumn('softdelete', 'boolean')
+        ->addColumn('softdelete', 'boolean', ['default' => 0])
         ->addColumn('created_at', 'datetime')
         ->addColumn('deleted_at', 'datetime')
         ->create();
