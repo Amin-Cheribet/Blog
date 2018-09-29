@@ -7,7 +7,18 @@
 @section('body')
     <form class="configuration-form" action="{{url('admin/configuration')}}" method="post" enctype="multipart/form-data">
         {{csrf_field()}}
+        @if (!empty($errors))
+            <ul class="errors">
+                @foreach ($errors as $error)
+                    <li>- {{$error}}</li>
+                @endforeach
+            </ul>
+        @endif
         <table>
+            <tr>
+                <td><label for="">Blog Name :</label></td>
+                <td><input type="text" name='name' placeholder='Blog Name' value='{{$data->name}}'></td>
+            </tr>
             <tr>
                 <td><label for="">Lanuages : </label></td>
                 <td><input type="text" name="languages" placeholder="Example: en fr ar (leave spaces)" value="{{$data->languages}}"></td>

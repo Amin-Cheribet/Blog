@@ -3,7 +3,7 @@
 @endphp
 
 <div class="header transparent-header">
-    <div class="logo"><a href="{{url('/')}}">The Alien</a></div>
+    <div class="logo"><a href="{{url('/')}}">{{container()->Configuration::$configuration->name}}</a></div>
 
     @if (Authenticator\Auth::check())
         <div class="elements disconnect"><a href="{{url('user/disconnect')}}"><div>Disconnect</div></a></div>

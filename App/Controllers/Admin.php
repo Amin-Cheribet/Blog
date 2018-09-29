@@ -34,9 +34,17 @@ class Admin extends Controller
     public function updateConfiguration(Request $request)
     {
         $coverImage = new Upload('coverimage');
-        $coverImage = $coverImage->save('Storage');
+        $coverImage->validate()->number(1);
+        $request->validate('name', 'name')->required();
+        $errors = array_merge($request->getErrors(), $coverImage->getErrors());
 
+        if (!empty($errors)) {
+            return view('admin/configuration', ['data' => $request, 'errors' => $errors]);
+        }
+
+        $coverImage = $coverImage->save('./Storage');
         $data = [
+            'name'       => $request->name,
             'languages'  => $request->languages,
             'comments'   => $request->comments,
             'visits'     => $request->visits,
@@ -45,6 +53,7 @@ class Admin extends Controller
         if (!file_put_contents(rootDir().'/config.json', json_encode($data))) {
             throw new \Exception("Faild to update configuration", 1);
         }
+
         route('admin/configuration');
     }
 
