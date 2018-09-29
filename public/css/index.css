@@ -103,31 +103,14 @@ body {
         text-overflow: ellipsis;
         font-family: regular;
         font-size: 100%; }
-  .content .assort-list {
+  .content .content-title {
     width: 50%;
     margin: 10px auto 20px auto;
     border-bottom: 1px solid black;
     border-top: 1px solid black; }
-    .content .assort-list ul {
-      list-style: none;
-      padding: 20px 0 20px 0;
-      margin: 0;
-      display: block; }
-      .content .assort-list ul li {
-        display: inline-block;
-        width: 32%;
-        text-align: center;
-        margin: 0;
-        padding: 0; }
-        .content .assort-list ul li a {
-          color: gray;
-          font-size: 130%;
-          font-family: regular;
-          text-decoration: none; }
-          .content .assort-list ul li a:hover {
-            color: black;
-            text-shadow: 0 0 1px gray;
-            transition: 200ms; }
+    .content .content-title .title {
+      text-align: center;
+      font-family: regular; }
 
 .arrow-up {
   transform: rotate(-45deg);
