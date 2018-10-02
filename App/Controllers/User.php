@@ -9,7 +9,6 @@ use Authenticator\Auth as Auth;
 
 class User extends Controller
 {
-
     public function index(string $offset)
     {
         $data = Users::select()->limit($offset, 30)->get();
@@ -19,7 +18,7 @@ class User extends Controller
     public function store(Request $request)
     {
         $request->validate('name', 'Name')->required()->length(4, 15)->unique('user', 'name');
-        $request->validate('email', 'E-mail')->required()->email()->length(4,100)->unique('user', 'email');
+        $request->validate('email', 'E-mail')->required()->email()->length(4, 100)->unique('user', 'email');
         $request->validate('password', 'Password')->required()->length(6, 30)->equals('confirm-password', $request->password2);
         if (!empty($request->getErrors())) {
             echo json_encode($request->getErrors());
@@ -66,7 +65,7 @@ class User extends Controller
             throw new \Exception("Not allowed action", 98);
         }
         $request->validate('name', 'Name')->required()->length(4, 15);
-        $request->validate('email', 'E-mail')->required()->email()->length(4,100);
+        $request->validate('email', 'E-mail')->required()->email()->length(4, 100);
         $request->validate('password', 'Password')->required()->length(6, 30)->equals('Confirm-password', $request->password2);
         if ($request->isValide()) {
             Users::update([
@@ -106,7 +105,7 @@ class User extends Controller
         Users::update([
             'banned' => '1'
         ])
-        ->where('id' , '=', $id)
+        ->where('id', '=', $id)
         ->save();
         redirect(previousUrl());
     }
@@ -119,7 +118,7 @@ class User extends Controller
         Users::update([
             'banned' => '0'
         ])
-        ->where('id' , '=', $id)
+        ->where('id', '=', $id)
         ->save();
         redirect(previousUrl());
     }
