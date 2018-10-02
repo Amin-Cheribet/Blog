@@ -57,23 +57,21 @@ class Post extends Controller
                 'writer'      => Auth::user()->id,
                 'language'    => $language,
                 'post'        => $request->post,
-                'coverimage'  => $coverData[0]->id,
-                'gridimage'   => $gridData[0]->id,
+                'coverimage'  => $coverData->id,
+                'gridimage'   => $gridData->id,
             ])->save();
             redirect('post/'.$id);
         }
         view('post/create', ['errors' => $errors]);
     }
 
-    private function saveImage(array $images)
+    private function saveImage($image)
     {
-        foreach ($images as $image) {
-            \Model\Image::insert([
-                'id'   => $image->id,
-                'name' => $image->name,
-                'path' => $image->path,
-            ])->save();
-        }
+        \Model\Image::insert([
+            'id'   => $image->id,
+            'name' => $image->name,
+            'path' => $image->path,
+        ])->save();
     }
 
     public function show(string $id)
