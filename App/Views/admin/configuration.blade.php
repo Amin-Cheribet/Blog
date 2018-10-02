@@ -5,7 +5,7 @@
 @endsection
 
 @section('body')
-    <form class="configuration-form" action="{{url('admin/configuration')}}" method="post" enctype="multipart/form-data">
+    <form class="configuration-form" action="{{url('admin/configuration')}}" method="post" >
         {{csrf_field()}}
         @if (!empty($errors))
             <ul class="errors">
@@ -24,6 +24,10 @@
                 <td><input type="text" name="languages" placeholder="Example: en fr ar (leave spaces)" value="{{$data->languages}}"></td>
             </tr>
             <tr>
+                <td><label for="">SEO : </label></td>
+                <td><textarea name="seo" cols="30" rows="30" placeholder='Search engine optimization'>{{$data->seo}}</textarea></td>
+            </tr>
+            <tr>
                 <td><label for="">Allow Comments :</label></td>
                 <td>
                     <input type="radio" name="comments" value="1" @if($data->comments === '1') checked @endif>Yes
@@ -38,13 +42,31 @@
                 </td>
             </tr>
             <tr>
+                <td colspan="2"><input type="submit" name="submit" value="update"></td>
+            </tr>
+
+        </table>
+    </form>
+    <br>
+    <hr>
+    <br>
+    <form class="configuration-form" action="{{url('admin/configuration/background')}}" method="post" enctype="multipart/form-data">
+        {{csrf_field()}}
+        @if (!empty($uploadErrors))
+            <ul class="errors">
+                @foreach ($uploadErrors as $error)
+                    <li>- {{$error}}</li>
+                @endforeach
+            </ul>
+        @endif
+        <table>
+            <tr>
                 <td><label for="">Cover Image :</label></td>
                 <td><input type="file" name="coverimage[]"></td>
             </tr>
             <tr>
                 <td colspan="2"><input type="submit" name="submit" value="update"></td>
             </tr>
-
         </table>
     </form>
 @endsection
