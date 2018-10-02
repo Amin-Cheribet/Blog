@@ -35,5 +35,6 @@ $route->group('admin', function ($route) {
     $route->get('users', 'Admin@usersList');
     $route->get('configuration', 'Admin@showConfiguration');
     $route->post('configuration', 'Admin@updateConfiguration');
+    $route->post('configuration/background', 'Admin@updateCoverImage');
     $route->get('statistics', 'Admin@statistics');
 });
