@@ -34,9 +34,9 @@ class Likes extends AbstractMigration
         ->addColumn('id-post', 'string', ['limit' => 30])
         ->addColumn('id-user', 'string', ['limit' => 30])
         ->addColumn('value', 'integer')
-        ->addColumn('softdelete', 'boolean')
+        ->addColumn('softdelete', 'boolean', ['default' => 0])
         ->addColumn('created_at', 'datetime')
-        ->addColumn('deleted_at', 'datetime')
+        ->addColumn('deleted_at', 'datetime', ['null' => true])
         ->create();
     }
 }

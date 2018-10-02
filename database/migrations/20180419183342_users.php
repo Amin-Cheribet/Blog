@@ -31,15 +31,15 @@ class Users extends AbstractMigration
         $users = $this->table('users', ['id' => false, 'primary_key' => 'id']);
         $users
         ->addColumn('id', 'string', ['limit' => 30])
-        ->addColumn('photo', 'string', ['limit' => 30])
+        ->addColumn('photo', 'string', ['limit' => 30, 'null' => true])
         ->addColumn('name', 'string', ['limit' => 15])
         ->addColumn('email', 'string', ['limit' => 40])
         ->addColumn('password', 'string', ['limit' => 70])
         ->addColumn('banned', 'integer')
         ->addColumn('auth', 'integer')
-        ->addColumn('softdelete', 'boolean')
+        ->addColumn('softdelete', 'boolean', ['default' => 0])
         ->addColumn('created_at', 'datetime')
-        ->addColumn('deleted_at', 'datetime')
+        ->addColumn('deleted_at', 'datetime', ['null' => true])
         ->create();
     }
 }
