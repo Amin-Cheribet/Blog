@@ -18,4 +18,8 @@ php phinx migrate
 this command will create all necessary tables.
 
 # ScreenShots:
-![Alt text](relative/path/to/img.jpg?raw=true "Title")
+![Alt screenshot](1.png?raw=true "Home Page")
+![Alt screenshot](2.png?raw=true "Home Page")
+![Alt screenshot](3.png?raw=true "Posts Grid")
+![Alt screenshot](4.png?raw=true "Post")
+![Alt screenshot](5.png?raw=true "Post")
