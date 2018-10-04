@@ -60,7 +60,7 @@ class Post extends Controller
                 'coverimage'  => $coverData->id,
                 'gridimage'   => $gridData->id,
             ])->save();
-            redirect('post/'.$id);
+            redirect('post/'.$groupid);
         }
         view('post/create', ['errors' => $errors]);
     }
@@ -76,7 +76,7 @@ class Post extends Controller
 
     public function show(string $id)
     {
-        $post = Posts::leftJoin('images', 'coverimage', 'id')->where('language', '=', language())->first();
+        $post = Posts::leftJoin('images', 'coverimage', 'id')->where('language', '=', language())->where('postgroup', '=', $id)->first();
         if (is_null($post)) {
             throw new \Exception("This Post does not exist", 404);
         }
